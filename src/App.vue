@@ -1,18 +1,19 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <!-- <levelOne/> -->
+  <router-view/>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-// import LevelOne from "./pages/levelOne"
+// import levelOne from "./pages/levelOne"
+
+import 'animate.css';
 
 export default {
   name: 'App',
   components: {
-    // LevelOne
-    // HelloWorld
+    // levelOne
   },
   methods: {
   }

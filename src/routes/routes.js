@@ -1,13 +1,13 @@
-import LevelOne from "../pages/levelOne"
-import LevelTwo from "../pages/levelTwo"
+import levelOneS1 from "../pages/levelOne/levelOneS1.vue"
+import levelOneS2 from "../pages/levelOne/levelOneS2.vue"
 
 export default [
     {
-        path: '/level/one',
-        component: LevelOne
+        path: '/levelone/s1',
+        component: levelOneS1
     },
     {
-        path: '/level/two',
-        component: LevelTwo
+        path: '/levelone/s2',
+        component: levelOneS2
     }
 ]
