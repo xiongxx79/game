@@ -2,12 +2,7 @@
   <div class="oneWrap1">
     <div>
       <myDialog @showButton="showBtn" :talkList="talkList"></myDialog>
-      <img
-        src="../../assets/goBtn.png"
-        class="goBtn"
-        v-show="isShow2"
-        v-on:click="jump"
-      />
+      <img src="../../assets/goBtn.png" class="goBtn" v-show="isShow2" @click="jump" />
     </div>
     <!-- <router-link class="btn" to="/level/two">第二关</router-link> -->
   </div>
@@ -51,8 +46,7 @@ export default {
 .oneWrap1 {
   width: 100%;
   height: 100%;
-  background: black url("../../assets/BasketballCourt.jpg") top/80% 100%
-    no-repeat;
+  background: black url("../../assets/BasketballCourt.jpg") top/80% 100% no-repeat;
   background-size: contains;
 }
 .goBtn {
@@ -62,13 +56,6 @@ export default {
   cursor: pointer;
   width: 150px;
   height: 60px;
+  animation: fadeIn 1s;
 }
-
-/* .btn {
-  height: 20px;
-  width: 100px;
-  display: inline-block;
-  font-size: 18px;
-  margin: 10px;
-} */
 </style>
