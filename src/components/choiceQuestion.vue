@@ -1,7 +1,7 @@
 <template>
   <div class="choiceWrap">
-    <div>
-      <div class="quesTion">{{ question.title }}</div>
+    <div class="choiceContent">
+      <div class="title">{{ question.title }}</div>
       <div class="answerList">
         <div
           v-for="(item, index) in question.answerList"
@@ -38,6 +38,7 @@ export default {
     sendAnswer () {
       if (this.value !== '') {
         this.$emit('sendAnswer', this.value)
+        this.value = ''
       } else {
         this.$message({
           message: '您还没选择答案！',
@@ -63,6 +64,21 @@ export default {
   opacity: 0.86;
   z-index: 10;
 }
+.choiceContent {
+  padding: 80px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 900px;
+}
+
+.title {
+  font-size: 17px;
+  margin-bottom: 20px;
+  z-index: 100;
+  color: #ffffff;
+  text-align: center;
+}
 .answerList {
   margin-top: 60px;
   display: flex;
@@ -77,15 +93,6 @@ export default {
   text-align: center;
 }
 
-.quesTion {
-  font-size: 17px;
-  /* margin-top: 100px;
-  margin-left: 180px; */
-  margin-bottom: 20px;
-  z-index: 100;
-  color: #ffffff;
-  /* text-align: left; */
-}
 .opTion {
   width: 300px;
   height: 35px;
