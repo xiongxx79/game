@@ -1,80 +1,103 @@
 <template>
   <div class="choiceWrap">
-      <div class="quesTion">{{quesHead}}</div>
-
-      <div style="margin-top:60px">
-          <el-button type="success" plain class="opTion" value="A" v-model="value">{{answerOne}}</el-button><br/>
-          <el-button type="success" plain class="opTion" value="B" v-mode="value">{{answerTwo}}</el-button><br/>
-          <el-button type="success" plain class="opTion" value="C" v-model="value">{{answerThree}}</el-button><br/>
-          <el-button type="success" plain class="opTion" value="D" v-model="value">{{answerFour}}</el-button>
+    <div class="quesTion">{{ question.title }}</div>
+    <div class="answerList" style="margin-top: 60px">
+      <div
+        v-for="(item, index) in question.answerList"
+        :key="index"
+        style="width: 100%; text-align: center"
+      >
+        <el-button
+          class="btnList"
+          type="success"
+          plain
+          @click="() => handleToClick(item.value)"
+          >{{ item.label }}</el-button
+        >
       </div>
-
-      <el-button type="warning" round class="submitBtn" @click="sendAnswer">确定</el-button>
-
+    </div>
+    <div style="text-align: center">
+      <el-button type="warning" round @click="sendAnswer">确定</el-button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-name:"choiceQuestion",
-props: ['quesList'],
+  name: "choiceQuestion",
+  props: ['question'],
 
-data(){
-    return{
-        quesHead:this.quesList[0],
-        answerOne:this.quesList[1],
-        answerTwo:this.quesList[2],
-        answerThree:this.quesList[3],
-        answerFour:this.quesList[4],
-        value:''
-}
-},
-methods:{
-    sendAnswer(){
-        console.log(this.value);
-        this.$emit('anSwer',this.value)
+  data () {
+    return {
+      value: ''
     }
-}
+  },
+  methods: {
+    sendAnswer () {
+      if (this.value !== '') {
+        this.$emit('sendAnswer', this.value)
+      } else {
+        this.$message({
+          message: '您还没选择答案！',
+          type: 'warning'
+        })
+      }
+
+
+    },
+    handleToClick (e) {
+      this.value = e
+    }
+  }
 }
 </script>
 
 <style>
-.choiceWrap{
-  left: 12%;
-  top:2%;
-  width:76%;
-  height:96%;
-  position: absolute;
+.choiceWrap {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   background: #000000;
-  opacity:0.86;
+  opacity: 0.86;
   z-index: 10;
 }
-.quesTion{
-    font-size: 17px;
-    margin-top: 100px;
-    margin-left: 180px;
-    margin-bottom: 20px;
-    width: 720px;
-    z-index: 100;
-    color: #ffffff;
-    text-align: left;
+.answerList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }
-.opTion{
-    width:300px;
-    height:35px;
-    margin-bottom: 20px;
-    margin-left: 330px;
-    z-index: 100;
-    text-align: centers;
-    vertical-align:middle;
-    font-size: 17px;
-    font-weight: 600;
-    opacity:1;
+.btnList {
+  width: 300px;
+  height: 35px;
+  margin-bottom: 20px;
+  text-align: center;
 }
-.submitBtn{
-    margin-left:440px;
-    margin-top:10px;
-    font-size:17spx;
-    font-weight:600;
+
+.quesTion {
+  font-size: 17px;
+  margin-top: 100px;
+  margin-left: 180px;
+  margin-bottom: 20px;
+  width: 720px;
+  z-index: 100;
+  color: #ffffff;
+  text-align: left;
+}
+.opTion {
+  width: 300px;
+  height: 35px;
+  margin-bottom: 20px;
+  margin-left: 330px;
+  z-index: 100;
+  text-align: centers;
+  vertical-align: middle;
+  font-size: 17px;
+  font-weight: 600;
+  opacity: 1;
+}
+.submitBtn {
+  font-size: 17px;
+  font-weight: 600;
 }
 </style>
