@@ -1,10 +1,19 @@
 <template>
-  <div class="oneWrap1">
+  <div class="bgWrap">
+    <div class="bgOut"></div>
+        <img src="../../assets/BasketballCourt.jpg" class="bgIn">
+
+    <audio autoplay loop>
+      <source src="../../assets/bgm1.mp3" type="audio/mp3" />
+    </audio>
+
     <div>
-      <myDialog @showButton="showBtn" :talkList="talkList"></myDialog>
-      <img src="../../assets/goBtn.png" class="goBtn" v-show="isShow2" @click="jump" />
+      <myDialog 
+        @showButton="showBtn" 
+        :talkList="talkList">
+      </myDialog>
+      <button class="goBtn" @click="jump">找线索</button>
     </div>
-    <!-- <router-link class="btn" to="/level/two">第二关</router-link> -->
   </div>
 </template>
 
@@ -43,19 +52,44 @@ export default {
 </script>
 
 <style>
-.oneWrap1 {
+.bgWrap{
   width: 100%;
   height: 100%;
-  background: black url("../../assets/BasketballCourt.jpg") top/80% 100% no-repeat;
-  background-size: contains;
+  background: #39619b;
+}
+.bgOut{
+  width: 78%;
+  height: 100%;
+  background:#ffffff;
+  left: 11%;
+  position: absolute;
+}
+.bgIn{
+  left: 12%;
+  top:2%;
+  width:76%;
+  height:96%;
+  position: absolute;
 }
 .goBtn {
   right: 200px;
-  bottom: 15px;
+  bottom: 150px;
   position: absolute;
   cursor: pointer;
-  width: 150px;
-  height: 60px;
+  width: 120px;
+  height: 40px;
+  border-style: groove;
+  border-color: black;
+  border-radius: 5px;
+  border-width: 2px;
+  background: #efc813;
   animation: fadeIn 1s;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+#vd{
+  width: 100px;
+}
+
 </style>

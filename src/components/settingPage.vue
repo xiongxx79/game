@@ -3,12 +3,44 @@
     <img src="../assets/operateBg2.png" class="operateBg">
     <img src="../assets/mask1.png" class="mask1">
     <img src="../assets/mask2.png" class="mask2">
-    <img src="../assets/mask3.png" class="mask3">
-    <img src="../assets/mask4.png" :class="DigiHealth" @click="open">
+    <img src="../assets/mask3.png" class="mask3" @click="dialogSelectVisible = true">
+    <img src="../assets/mask4.png" :class="DigiHealth" @click="openFix">
 
-    <el-button class="backBtn" type="info" icon="el-icon-back" circle size="mini" @click="toDesk"></el-button>
+    <el-button 
+      class="backBtn" 
+      type="info" 
+      icon="el-icon-back" 
+      circle size="mini" 
+      @click="toDesk">
+    </el-button>
+
+    <el-dialog 
+    title="请选择应用及通知状态" 
+    :visible.sync="dialogSelectVisible" 
+    style="top:100px" 
+    center>
+
+          <el-select v-model="value" placeholder="请选择应用">
+            <el-option 
+            v-for="item in options2" 
+            :key="item.value" 
+            :label="item.label" 
+            :value="item.value">
+            </el-option>
+          </el-select>
+
+          <el-switch
+          v-model="value2"
+          active-text="允许通知"
+          style="margin-left:90px">
+          </el-switch>
+
+          <span slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="checkSta">确 定</el-button>
+          </span>
+  </el-dialog>
+
 </div>
-
 </template>
 
 <script>
@@ -20,11 +52,28 @@ name: 'settingPage',
         DigiHealth:"mask4",
         bshow1:false,
         bshow2:false,
-        flag:1
+        flag:1,
+        options2: [{
+          value: 'schedule',
+          label: '日程表'
+        }, {
+          value: 'game',
+          label: '游戏'
+        }, {
+          value: 'setting',
+          label: '设置'
+        },
+        {
+          value: 'ivideo',
+          label: '爱视频'
+        }],
+        value:'',
+        value2:true,
+        dialogSelectVisible:false,
     }
   },
   methods:{
-    open() {
+    openFix() {
         if(this.flag==1){
         this.$alert('(* ￣︿￣)','这个功能好像坏了。',  {
           showClose:false,
@@ -46,8 +95,23 @@ name: 'settingPage',
     },
     toDesk(){
       this.$emit('toDesk',false)
-    }
+    },
+    checkSta(){
+      if(this.value=="ivideo" && this.value2==false){
+          this.$message({
+          message: '设置成功！',
+          type: 'success'
+        });
+          this.dialogSelectVisible=false,
+          this.$emit('showDialog2',true)
+    } else{
+          this.$message({
+          message: 'APP或通知状态错误，请重新选择！',
+          type: 'error'
+          });
+    }  
   }
+}
 }
 </script>
 
@@ -138,7 +202,7 @@ name: 'settingPage',
   right: 630px;
   bottom: 65px;
   position:absolute;
-  z-index: 1000;
+  z-index: 1;
   animation: fadeIn 2s;
 }
 

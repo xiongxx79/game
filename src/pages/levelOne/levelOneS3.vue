@@ -1,43 +1,130 @@
 <template>
   <div class="oneWrap3">
-    <img src="../../assets/tip1.png" class="tip1" v-if="tipShow1">
-    <img src="../../assets/tipBtn.png" class="tipBtn" v-if="tipShow1" @click.once="tipDis">
+    <audio autoplay loop>
+      <source src="../../assets/bgm2.mp3" type="audio/mp3" />
+    </audio>
+    <img 
+    src="../../assets/tip1.png" 
+    class="tip1" 
+    v-if="tipShow1">
+
+    <img 
+    src="../../assets/tipBtn.png" 
+    class="tipBtn" 
+    v-if="tipShow1" 
+    @click.once="tipDis">
+
     <div>
-    <img src="../../assets/settingicon.png" class="settingicon" @click="showSetting">
-    <p class="settingtext">设置</p>
-    <img src="../../assets/scheduleicon.png" class="scheduleicon" @click="showSchedule">
-    <p class="scheduletext">日程</p>
-    <img src="../../assets/gameicon.png" class="gameicon" @click="showGame">
-    <p class="gametext">游戏</p>
-    <img src="../../assets/timeicon.png" class="timeicon" @click="showTime">
-    <p class="timetext">时钟</p>
+        <img 
+        src="../../assets/settingicon.png" 
+        class="settingicon" 
+        @click="showSetting">
+        <p class="settingtext">设置</p>
+
+        <img 
+        src="../../assets/scheduleicon.png" 
+        class="scheduleicon"
+        @click="showSchedule">
+        <p class="scheduletext">日程</p>
+
+        <img 
+        src="../../assets/gameicon.png" 
+        class="gameicon" 
+        @click="showGame">
+        <p class="gametext">游戏</p>
+
+        <img 
+        src="../../assets/timeicon.png" 
+        class="timeicon" 
+        @click="showTime">
+        <p class="timetext">时钟</p>
     </div>
 
-    <settingPage v-show="setShow" @showTip="showTip" @toDesk="toDesk" @showLimit="showLimit">
+    <settingPage 
+      v-show="setShow" 
+      @showTip="showTip" 
+      @toDesk="toDesk"
+      @showLimit="showLimit">
     </settingPage>
 
-    <img src="../../assets/tip2.png" class="tip1" v-if="tipShow2">
-    <img src="../../assets/tipBtn.png" class="tipBtn" v-if="tipShow2" @click.once="tipDis">
+    <img 
+    src="../../assets/tip2.png" 
+    class="tip1" 
+    v-if="tipShow2">
+    <img 
+    src="../../assets/tipBtn.png" 
+    class="tipBtn" 
+    v-if="tipShow2" 
+    @click.once="tipDis">
 
-    <img src="../../assets/stopTime.png" class="stopTime" v-show="timeShow">
-    <el-button type="info" icon="el-icon-close" circle size="mini" class="closeBtn2" v-show="timeShow" @click="timeClose"></el-button>
+    <img 
+    src="../../assets/stopTime.png" 
+    class="stopTime" 
+    v-show="timeShow">
 
-    <img src="../../assets/schedule.png" class="schedule" v-show="scheduleShow">
-    <el-button type="primary" icon="el-icon-close" circle size="mini" class="closeBtn3"
-    v-show="scheduleShow" @click="scheduleClose"></el-button>
+      <el-button 
+        type="info" 
+        icon="el-icon-close" 
+        circle size="mini" 
+        class="closeBtn2" 
+        v-show="timeShow" 
+        @click="timeClose">
+      </el-button>
 
-    <img src="../../assets/gameRecord.png" class="gameRecord" v-show="gameShow">
-    <img src="../../assets/closeBtn.png" class="closeBtn4" v-show="gameShow" @click="gameClose"/>
+    <img 
+    src="../../assets/schedule.png" 
+    class="schedule" 
+    v-show="scheduleShow">
 
-    <limitPage v-show="limitShow" @showSuccess="showSuccess" @backSetting="backSetting"></limitPage>
+      <el-button 
+        type="primary" 
+        icon="el-icon-close" 
+        circle size="mini"
+        class="closeBtn3"
+        v-show="scheduleShow" 
+        @click="scheduleClose">
+      </el-button>
 
-    <img src="../../assets/successBg1.png" class="successBg1" v-if="successShow">
-    <img src="../../assets/alertCard.png" class="alertCard" v-if="successShow" @click.once="card1=true">
+    <img 
+    src="../../assets/gameRecord.png" 
+    class="gameRecord" 
+    v-show="gameShow">
+    <img 
+    src="../../assets/closeBtn.png" 
+    class="closeBtn4" 
+    v-show="gameShow" 
+    @click="gameClose"/>
 
-    <img src="../../assets/card1.png" class="cards" v-if="card1" >
-    <img src="../../assets/cardBtn.png" class="cardBtn" v-if="card1" @click="card1=false,card2=true">
-    <img src="../../assets/card2.png" class="cards" v-if="card2" >
-    <img src="../../assets/nextLevelBtn.png" class="cardBtn" v-if="card2" @click="nextLevel">
+    <limitPage 
+      v-show="limitShow" 
+      @showSuccess="showSuccess"
+      @backSetting="backSetting">
+     </limitPage>
+
+    <img 
+    src="../../assets/successBg1.png" 
+    class="successBg1" 
+    v-if="successShow">
+    <img src="../../assets/alertCard.png" 
+    class="alertCard" 
+    v-if="successShow" 
+    @click.once="card1=true">
+
+    <img src="../../assets/card1.png" 
+    class="cards" 
+    v-if="card1" >
+    <img src="../../assets/cardBtn.png" 
+    class="cardBtn" 
+    v-if="card1" 
+    @click="card1=false,card2=true">
+    <img src="../../assets/card2.png" 
+    class="cards" 
+    v-if="card2" >
+    <img 
+    src="../../assets/nextLevelBtn.png" 
+    class="cardBtn" 
+    v-if="card2" 
+ >
 
   </div>
 </template>
@@ -106,9 +193,6 @@ export default {
       this.setShow=data
       this.limitShow=!data
     },
-    nextLevel(){
-      this.$router.push({ path: '/leveltwo/s1' })
-    }
   },
   components:{
     settingPage,
@@ -121,7 +205,7 @@ export default {
 .oneWrap3{
   width: 100%;
   height: 100%;
-  background: black url("../../assets/phonedesk.png") top/80% 100% no-repeat;
+  background: #39619b url("../../assets/phonedesk.png") top/80% 100% no-repeat;
   background-size: contains;
 }
 .settingicon{
@@ -292,7 +376,8 @@ export default {
   height: 100%;
   left: 12%;
   position: absolute;
-  animation:zoomIn 2s;
+  animation:zoomIn 1s;
+  z-index: 100;
 }
 .alertCard{
   width: 100px;
@@ -302,6 +387,7 @@ export default {
   position: absolute;
   cursor: pointer;
   animation: fadeIn 3s;
+  z-index: 1000;
 }
 .cards{
   width: 280px;
@@ -310,6 +396,7 @@ export default {
   top: 80px;
   position: absolute;
   animation: flip 0.7s ;
+  z-index: 10000;
 }
 .cardBtn{
   width: 75px;
@@ -319,5 +406,6 @@ export default {
   position: absolute;
   cursor: pointer;
   animation: fadeIn 3s;
+  z-index: 10000;
 }
 </style>

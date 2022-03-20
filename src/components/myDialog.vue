@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div style="z-index:1000">
     <div>
       <div class="square"></div>
       <span class="text" v-html="msg"></span>
-      <button class="conti" v-on:click="handleToNext" v-show="isShow1">
-        ▼ 继续
+      <button class="conti" v-show="isShow1" @click="handleToNext" >
+      ▼ 继续
       </button>
       <img src="../assets/hero.png" class="img" />
     </div>
@@ -45,22 +45,21 @@ export default {
 <style>
 .square {
   background-color: #cdcdcd;
-  width: 80%;
-  height: 20%;
-  margin-left: 10%;
   position: absolute;
-  bottom: 0;
-  border-radius: 2px;
   opacity: 0.7;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+  left: 12%;
+  bottom:2%;
+  width:76%;
+  height:20%;
+  position: absolute;
 }
 .img {
-  width: 150px;
-  height: 200px;
+  width: 135px;
+  height: 180px;
   position: absolute;
-  bottom: 0;
+  bottom: 2%;
   left: 15%;
-  opacity: 0.9;
   animation: fadeInLeft;
   animation-duration: 2s;
 }
@@ -76,7 +75,7 @@ export default {
 .text {
   font-size: 18px;
   position: absolute;
-  bottom: 35px;
   left: 400px;
+  bottom: 35px;
 }
 </style>

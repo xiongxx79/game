@@ -1,14 +1,32 @@
 <template>
 <div>
   <img src="../assets/limitBg.png" class="limitBg">
-  <img src="../assets/mask3.png" class="maskOne">
-  <img src="../assets/mask2.png" class="maskTwo" @click="dialogSelectVisible = true">
+
+  <img 
+  src="../assets/mask3.png" 
+  class="maskOne"
+  @click="banTime">
+
+  <img 
+  src="../assets/mask2.png" 
+  class="maskTwo" 
+  @click="dialogSelectVisible1 = true">
+
   <img src="../assets/mask2.png" class="maskThree">
 
-  <el-dialog title="请选择要进行时间限制的应用及限制时间" :visible.sync="dialogSelectVisible" style="top:100px" center>
+  <el-dialog 
+    title="请选择要进行时间限制的应用及限制时间" 
+    :visible.sync="dialogSelectVisible1" 
+    style="top:100px" 
+    center>
 
   <el-select v-model="value" placeholder="请选择应用">
-    <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value"></el-option>
+    <el-option 
+        v-for="item in options1" 
+        :key="item.value" 
+        :label="item.label" 
+        :value="item.value">
+    </el-option>
   </el-select>
 
   <el-radio-group v-model="radio">
@@ -22,8 +40,36 @@
   </span>
   </el-dialog>
 
-  <el-button class="backBtn" type="info" icon="el-icon-back" circle size="mini" @click="toSetting"></el-button>
+  <el-button 
+    class="backBtn" 
+    type="info" 
+    icon="el-icon-back" 
+    circle size="mini" 
+    @click="toSetting">
+  </el-button>
 
+  <el-dialog 
+    title="请设置手机停用时间" 
+    :visible.sync="dialogSelectVisible2" 
+    style="top:100px" 
+    center>
+
+      <el-time-picker
+        is-range
+        v-model="value1"
+        range-separator="至"
+        start-placeholder="开始时间"
+        end-placeholder="结束时间"
+        placeholder="选择时间范围"
+        style="margin-left:100px"
+        format=""
+        value-format="yyyy-MM-dd-HH-mm">
+      </el-time-picker>
+
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="checkBantime">确 定</el-button>
+      </span>
+  </el-dialog>
 </div>
 </template>
 
@@ -45,7 +91,9 @@ data(){
         }],
         value:'',
         radio:'',
-        dialogSelectVisible:false,
+        value1: [new Date(2022, 3, 6, 8, 40), new Date(2022, 3, 6, 9, 40)],
+        dialogSelectVisible1:false,
+        dialogSelectVisible2:false,
     }
 },
 methods:{
@@ -55,7 +103,7 @@ methods:{
           message: '设置成功！',
           type: 'success'
         });
-          this.dialogSelectVisible=false,
+          this.dialogSelectVisible1=false,
           this.$emit('showSuccess',true)
     } else{
           this.$message({
@@ -66,7 +114,25 @@ methods:{
 },
   toSetting(){
     this.$emit('backSetting',true)
-  }
+  },
+  banTime(){
+    this.dialogSelectVisible2=true
+  },
+    checkBantime(){
+    if( this.value1[0]=='2022-04-06-22-30' && this.value1[1]=='2022-04-06-23-30'){
+          this.$message({
+          message: '设置成功！',
+          type: 'success'
+        });
+          this.dialogSelectVisible2=false,
+          this.$emit('banTimeRight',true)
+    } else{
+          this.$message({
+          message: '停用时间限制错误，请重新选择！',
+          type: 'error'
+          });
+    }
+}
 }
 }
 </script>
