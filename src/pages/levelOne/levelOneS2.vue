@@ -13,6 +13,13 @@
         <img src="../../assets/fourGrass.png" class="fourGrass">
     </div>
     <choiceQuestion v-show="quesShow1" :quesList="quesList1" @anSwer="getAnswer"></choiceQuestion>
+
+     <div>
+        <img src="../../assets/lifeOutLine.png" class="life">
+        <img src="../../assets/lifeHeart.png" class="life">
+        <img src="../../assets/lifeOutLine.png" class="life2">
+        <img src="../../assets/lifeHeart.png" class="life2">
+     </div>
   </div>
 </template>
 
@@ -119,5 +126,20 @@ export default {
   height: 100%;
   background: #39619b;
 }
-
+.life{
+  width: 50px;
+  height: 50px;
+  top:30px;
+  right: 200px;
+  z-index: 100;
+  position: absolute;
+}
+.life2{
+  width: 50px;
+  height: 50px;
+  top:30px;
+  right: 250px;
+  z-index: 100;
+  position: absolute;
+}
 </style>

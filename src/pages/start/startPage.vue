@@ -193,7 +193,7 @@ created(){
 .startGameBtn{
   width: 180px;
   height: 80px;
-  margin-left: 400px;
+  margin-left: 40%;
   margin-top: 30px;
   cursor: pointer;
 }

@@ -2,7 +2,7 @@
   <div class="choiceWrap">
       <div class="quesTion">{{judgeHead}}</div>
 
-      <div style="margin-top:100px">
+      <div style="margin-top:50px">
           <el-button type="success" plain class="opTion" value="A" v-model="value">{{answerOne}}</el-button><br/>
           <el-button type="success" plain class="opTion" value="B" v-mode="value">{{answerTwo}}</el-button><br/>
       </div>
@@ -46,7 +46,7 @@ methods:{
 }
 .quesTion{
     font-size: 17px;
-    margin-top: 100px;
+    margin-top: 150px;
     margin-left: 180px;
     margin-bottom: 20px;
     width: 720px;
