@@ -1,23 +1,25 @@
 <template>
   <div class="choiceWrap">
-    <div class="quesTion">{{ question.title }}</div>
-    <div class="answerList" style="margin-top: 60px">
-      <div
-        v-for="(item, index) in question.answerList"
-        :key="index"
-        style="width: 100%; text-align: center"
-      >
-        <el-button
-          class="btnList"
-          type="success"
-          plain
-          @click="() => handleToClick(item.value)"
-          >{{ item.label }}</el-button
+    <div>
+      <div class="quesTion">{{ question.title }}</div>
+      <div class="answerList">
+        <div
+          v-for="(item, index) in question.answerList"
+          :key="index"
+          style="width: 100%; text-align: center"
         >
+          <el-button
+            class="btnList"
+            type="success"
+            plain
+            @click="() => handleToClick(item.value)"
+            >{{ item.label }}</el-button
+          >
+        </div>
       </div>
-    </div>
-    <div style="text-align: center">
-      <el-button type="warning" round @click="sendAnswer">确定</el-button>
+      <div style="text-align: center">
+        <el-button type="warning" round @click="sendAnswer">确定</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -62,6 +64,7 @@ export default {
   z-index: 10;
 }
 .answerList {
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,13 +79,12 @@ export default {
 
 .quesTion {
   font-size: 17px;
-  margin-top: 100px;
-  margin-left: 180px;
+  /* margin-top: 100px;
+  margin-left: 180px; */
   margin-bottom: 20px;
-  width: 720px;
   z-index: 100;
   color: #ffffff;
-  text-align: left;
+  /* text-align: left; */
 }
 .opTion {
   width: 300px;
