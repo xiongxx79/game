@@ -1,11 +1,25 @@
 <template>
-  <div>
-  </div>
+<div>
+</div>
 </template>
 
 <script>
 export default {
- name: 'levelThreeS1',
+name:"levelThreeS1",
+
+data(){
+    return{
+
+    }
+},
+
+methods:{
+
+},
+
+components:{
+
+}
 }
 </script>
 

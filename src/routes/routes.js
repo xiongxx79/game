@@ -1,11 +1,18 @@
-import startPage from "../pages/start/startPage.vue"
+import startPage from "../pages/startAndEnd/startPage.vue"
+
 import levelOneS1 from "../pages/levelOne/levelOneS1.vue"
 import levelOneS2 from "../pages/levelOne/levelOneS2.vue"
 import levelOneS3 from "../pages/levelOne/levelOneS3.vue"
+import levelOneS4 from "../pages/levelOne/levelOneS4.vue"
+import levelOneS6 from "../pages/levelOne/levelOneS6.vue"
+
 import levelTwoS1 from "../pages/levelTwo/levelTwoS1.vue"
 import levelTwoS2 from "../pages/levelTwo/levelTwoS2.vue"
 import levelTwoS3 from "../pages/levelTwo/levelTwoS3.vue"
+
 import levelThreeS1 from "../pages/levelThree/levelThreeS1.vue"
+
+import phoneStore from "../pages/startAndEnd/phoneStore.vue"
 
 export default [
     {
@@ -25,6 +32,15 @@ export default [
         component: levelOneS3
     },
     {
+        path: '/levelone/s4',
+        component: levelOneS4
+    },
+    {
+        path: '/levelone/s6',
+        component: levelOneS6
+    },
+
+    {
         path: '/leveltwo/s1',
         component: levelTwoS1
     },
@@ -39,5 +55,9 @@ export default [
     {
         path: '/levelthree/s1',
         component: levelThreeS1
+    },
+    {
+        path: '/phoneStore',
+        component: phoneStore
     }
 ]

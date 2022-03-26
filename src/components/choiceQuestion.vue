@@ -6,7 +6,7 @@
         <div
           v-for="(item, index) in question.answerList"
           :key="index"
-          style="width: 100%; text-align: center"
+          style="width: 100%; text-align:center"
         >
           <el-button
             class="btnList"
@@ -28,7 +28,6 @@
 export default {
   name: "choiceQuestion",
   props: ['question'],
-
   data () {
     return {
       value: ''
@@ -45,8 +44,6 @@ export default {
           type: 'warning'
         })
       }
-
-
     },
     handleToClick (e) {
       this.value = e
@@ -63,6 +60,11 @@ export default {
   background: #000000;
   opacity: 0.86;
   z-index: 10;
+  left: 12%;
+  top:2%;
+  width:76%;
+  height:96%;
+  position: absolute;
 }
 .choiceContent {
   padding: 80px;
@@ -71,13 +73,12 @@ export default {
   flex-direction: column;
   width: 900px;
 }
-
 .title {
   font-size: 17px;
   margin-bottom: 20px;
   z-index: 100;
   color: #ffffff;
-  text-align: center;
+  text-align: left;
 }
 .answerList {
   margin-top: 60px;
@@ -92,7 +93,6 @@ export default {
   margin-bottom: 20px;
   text-align: center;
 }
-
 .opTion {
   width: 300px;
   height: 35px;

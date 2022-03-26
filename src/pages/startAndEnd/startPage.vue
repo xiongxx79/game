@@ -17,10 +17,15 @@
       <img 
       src="../../assets/startGameBtn.png" 
       class="startGameBtn"
-      @click="startShow=false">
+      @click="startShow=false,startTipsShow=true">
     </div>
 
     <div>
+      <p class="startTips" v-show="startTipsShow">
+        √ 初次游戏请按顺序选择关卡哦！
+        <br/>
+        √ 前三关可以获得丰富的手机壳制作材料！
+      </p>
 
     </div>
   </div>
@@ -33,7 +38,8 @@ export default {
   return{
     startShow:false,
     loadShow:true,
-    mapShow:false
+    mapShow:false,
+    startTipsShow:false
   }
 },
 created(){
@@ -155,16 +161,6 @@ created(){
   cursor: pointer;
   filter: brightness(1.1);
 }
-.startGame{
-  left: 12%;
-  top:2%;
-  width:76%;
-  height:96%;
-  background: #000000;
-  opacity: 0.86;
-  position: absolute;
-  z-index: 10;
-}
 .phoneStore{
   width:170px;
   height: 120px;
@@ -183,6 +179,17 @@ created(){
   cursor:pointer;
   filter: brightness(1.1);
 }
+.startGame{
+  left: 12%;
+  top:2%;
+  width:76%;
+  height:96%;
+  background: #000000;
+  opacity: 0.76;
+  position: absolute;
+  z-index: 10;
+}
+
 .gameName{
   margin-top: 130px;
   font-size: 72px;
@@ -196,5 +203,15 @@ created(){
   margin-left: 40%;
   margin-top: 30px;
   cursor: pointer;
+}
+.startTips{
+  font-size: 18px;
+  color: #ffffff;
+  position: absolute;
+  right: 150px;
+  top: 30px;
+  text-align: right;
+  z-index: 100;
+  animation: wobble 1s;
 }
 </style>

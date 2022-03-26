@@ -36,7 +36,7 @@ export default {
       }
     }
   },
-  mounted () {
+   mounted () {
     this.msg = this.talkList.shift()
   }
 }

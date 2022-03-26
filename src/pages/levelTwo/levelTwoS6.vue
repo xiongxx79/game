@@ -5,7 +5,7 @@
 
 <script>
 export default {
-name:"levelThreeS3",
+name:"levelTwoS6",
 
 data(){
     return{
