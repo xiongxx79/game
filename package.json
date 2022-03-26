@@ -13,6 +13,7 @@
     "core-js": "^3.6.5",
     "element-ui": "^2.15.6",
     "vue": "^2.6.11",
+    "vue-drag-resize": "^1.5.4",
     "vue-router": "3",
     "vuedraggable": "^2.24.3"
   },
