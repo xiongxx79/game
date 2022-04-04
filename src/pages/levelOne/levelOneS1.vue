@@ -3,18 +3,16 @@
     <div class="bgOut"></div>
         <img src="../../assets/BasketballCourt.jpg" class="bgIn">
 
-    <audio autoplay loop>
+    <!-- <audio autoplay loop>
       <source src="../../assets/bgm1.mp3" type="audio/mp3" />
-    </audio>
+    </audio> -->
 
-    <div>
       <myDialog 
         @showButton="showBtn" 
         :talkList="talkList1"
         v-if="dialogShow1">
       </myDialog>
-    </div>
-
+      
     <div v-if="sirShow">
       <p class="sirTalk">哈哈哈，找不到你的朋友了吗，他已经被我们关起来了，你要是有本事就去找找看吧！</p>
       <img src="../../assets/phoneSir.png" class="phoneSir">
@@ -163,5 +161,6 @@ export default {
   font-weight: 600;
   position: absolute;
   animation: fadeIn 4s;
+  z-index: 10;
 }
 </style>

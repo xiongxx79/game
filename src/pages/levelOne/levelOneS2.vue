@@ -15,6 +15,7 @@
         <img src="../../assets/lifeHeart.png" class="life2" v-show="life2">
       </div>
     <div>
+      
       <img
         src="../../assets/popCan.png"
         class="popCan"
@@ -46,6 +47,7 @@
         v-if="grassShow"
       />
     </div>
+
     <choiceQuestion
        v-show="quesShow"
       :question="question"
@@ -61,8 +63,8 @@
     <div style="margin-left:140px">
       <div class="tipsOut">
           <p class="tipsTitle">提示1：</p><br/><br/>
-          <p style="font-size:18px">√ 刘凯最近走到哪里都带着手机玩游戏，今天提前几分钟到了球场就坐在门口玩游戏。</p><br/>
-          <p style="font-size:18px">√ 手机“设置”里的数字健康功能可以限制应用程序的使用时间。</p><br/>     
+          <p style="font-size:16px;margin:20px;font-weight:600;">💡刘凯最近走到哪里都带着手机玩游戏，今天提前几分钟到了球场就坐在门口玩游戏</p>
+          <p style="font-size:16px;margin:20px;font-weight:600;">💡手机“设置”里的数字健康功能可以限制应用程序的使用时间</p><br/>     
       </div>
       <div class="tipsOut">
           <p class="tipsTitle">提示2：</p>
@@ -72,11 +74,11 @@
           height="100px" 
           style="margin-left:15px">
           <br/>
-          <p style="font-size:18px">√ 这好像是一张通往某个仓库的地图...</p><br/>
+          <p style="font-size:16px;margin:20px;font-weight:600;">这好像是一张通往某个仓库的地图...</p>
           <el-button 
           type="success" 
           plain 
-          style="margin-left:30%;font-weight:600"
+          style="margin-left:34%;font-weight:600"
           @click="sJump2"
           >
           使用
@@ -113,19 +115,19 @@ export default {
           answerList: [
             {
               value: 1,
-              label: 'A.	十进制',
+              label: 'A.十进制',
             },
             {
               value: 2,
-              label: 'B.	二进制',
+              label: 'B.二进制',
             },
             {
               value: 3,
-              label: 'C.	八进制',
+              label: 'C.八进制',
             },
             {
               value: 4,
-              label: 'D.	十六进制',
+              label: 'D.十六进制',
             },
           ],
           solution: 2
@@ -135,19 +137,19 @@ export default {
           answerList: [
             {
               value: 1,
-              label: 'A. 8%',
+              label: 'A.8%',
             },
             {
               value: 2,
-              label: 'B.	20%',
+              label: 'B.20%',
             },
             {
               value: 3,
-              label: 'C.	15%',
+              label: 'C.15%',
             },
             {
               value: 4,
-              label: 'D.	10%',
+              label: 'D.10%',
             },
           ],
           solution: 4
@@ -157,19 +159,19 @@ export default {
           answerList: [
             {
               value: 1,
-              label: 'A. 身体疾病',
+              label: 'A.身体疾病',
             },
             {
               value: 2,
-              label: 'B. 精神心理疾病',
+              label: 'B.精神心理疾病',
             },
             {
               value: 3,
-              label: 'C. 爱好',
+              label: 'C.爱好',
             },
             {
               value: 4,
-              label: 'D. 强迫症',
+              label: 'D.强迫症',
             },
           ],
           solution: 2
@@ -179,19 +181,19 @@ export default {
           answerList: [
             {
               value: 1,
-              label: 'A. 人工智能技术',
+              label: 'A.人工智能技术',
             },
             {
               value: 2,
-              label: 'B.	大数据技术',
+              label: 'B.大数据技术',
             },
             {
               value: 3,
-              label: 'C.	5G技术',
+              label: 'C.5G技术',
             },
             {
               value: 4,
-              label: 'D.	以上都是',
+              label: 'D.以上都是',
             },
           ],
           solution: 4
@@ -201,19 +203,19 @@ export default {
           answerList: [
             {
               value: 1,
-              label: 'A.	网络游戏成瘾',
+              label: 'A.网络游戏成瘾',
             },
             {
               value: 2,
-              label: 'B.	网络关系成瘾',
+              label: 'B.网络关系成瘾',
             },
             {
               value: 3,
-              label: 'C.	信息收集成瘾',
+              label: 'C.信息收集成瘾',
             },
             {
               value: 4,
-              label: 'D.	以上都是',
+              label: 'D.以上都是',
             },
           ],
           solution: 4
@@ -223,7 +225,7 @@ export default {
   },
   methods: {
     handleToClick (num) {
-            if(num==0){
+      if(num==0){
         this.popShow=false
       }else{
         if(num==1){
@@ -372,7 +374,7 @@ export default {
   background: #000000;
   opacity: 0.9;
   position: absolute;
-  z-index: 10;
+  z-index: 1000;
 }
 .overText{
   margin-top: 130px;
@@ -382,17 +384,17 @@ export default {
   font-weight: 600;
 }
 .overBtn{
-  margin-left: 45%;
+  text-align: center;
   margin-top: 30px;
   cursor: pointer;
   font-weight: 600;
 }
 .tipsOut{
-  background:#ffffff;
+  background:url("../../assets/whitePhone.png");
   width: 220px;
-  height: 300px;
-  color: #67C23A;
-  margin-top: 130px;
+  height: 400px;
+  color:#67C23A;
+  margin-top: 60px;
   margin-left: 50px;
   z-index: 100;
   display:inline-table;
@@ -408,6 +410,8 @@ export default {
   z-index: 100;
   display: inline-table;
   padding: 12px;
+  margin-top: 60px;
+  margin-left: 13px;
 }
 .levelTip{
   width: 230px;
@@ -423,4 +427,5 @@ export default {
   animation: wobble 2s;
   text-align: center;
 }
+
 </style>

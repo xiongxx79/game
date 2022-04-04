@@ -1,7 +1,8 @@
 <template>
   <div class="bgWrap">
     <div class="bgOut"></div>
-    <div class="choicePhoneWrap">
+           <img src="../../assets/storeBg.png" class="bgIn" style="opacity:0.9">
+     <div class="choicePhoneWrap">
       <p class="phoneText">我的背景图</p>
       <img
         src="../../assets/choicePhone1.png"
@@ -73,9 +74,29 @@
       <div>
         <img src="../../assets/stick1.png" class="sticks" />
         <img src="../../assets/stick2.png" class="sticks" />
-        <img src="../../assets/stick3.png" class="sticks" />
+        <img src="../../assets/stick3.png" class="sticks" /><br/>
+        <img src="../../assets/stick4.png" class="sticks" />
+        <img src="../../assets/stick5.png" class="sticks" />
+        <img src="../../assets/stick6.png" class="sticks" /><br/>
+        <img src="../../assets/stick7.png" class="sticks" />
+        <img src="../../assets/stick8.png" class="sticks" />
+        <img src="../../assets/stick9.png" class="sticks" /><br/>
+        <img src="../../assets/stick10.png" class="sticks" />
+        <img src="../../assets/stick11.png" class="sticks" />
+        <img src="../../assets/stick12.png" class="sticks" />
       </div>
-      <DragResize></DragResize>
+      <DragResize1></DragResize1>
+      <DragResize2></DragResize2>
+      <DragResize3></DragResize3>
+      <DragResize4></DragResize4>
+      <DragResize5></DragResize5>
+      <DragResize6></DragResize6>
+      <DragResize7></DragResize7>
+      <DragResize8></DragResize8>
+      <DragResize9></DragResize9>
+      <DragResize10></DragResize10>
+      <DragResize11></DragResize11>
+      <DragResize12></DragResize12>
 
       <br />
       <div></div>
@@ -92,10 +113,35 @@
 </template>
 
 <script>
-import DragResize from './dragResize.vue'
+import DragResize1 from './dragResize1'
+import DragResize2 from './dragResize2'
+import DragResize3 from './dragResize3'
+import DragResize4 from './dragResize4'
+import DragResize5 from './dragResize5'
+import DragResize6 from './dragResize6'
+import DragResize7 from './dragResize7'
+import DragResize8 from './dragResize8'
+import DragResize9 from './dragResize9'
+import DragResize10 from './dragResize10'
+import DragResize11 from './dragResize11'
+import DragResize12 from './dragResize12'
+
 export default {
   name: "phoneStore",
-  components: { DragResize },
+  components: { 
+    DragResize1,
+    DragResize2,
+    DragResize3,
+    DragResize4,
+    DragResize5,
+    DragResize6,
+    DragResize7,
+    DragResize8,
+    DragResize9,
+    DragResize10,
+    DragResize11,
+    DragResize12
+   },
   data () {
     return {
       phone1Show: true,
@@ -150,7 +196,7 @@ export default {
   top: 40px;
 }
 .phoneText {
-  color: black;
+  color:#39619b;
   font-size: 16px;
   font-weight: 600;
   text-align: center;

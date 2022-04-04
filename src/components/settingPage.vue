@@ -64,8 +64,8 @@ name: 'settingPage',
           label: '设置'
         },
         {
-          value: 'ivideo',
-          label: '爱视频'
+          value: 'friends',
+          label: '交友圈'
         }],
         value:'',
         value2:true,
@@ -97,13 +97,13 @@ name: 'settingPage',
       this.$emit('toDesk',false)
     },
     checkSta(){
-      if(this.value=="ivideo" && this.value2==false){
+      if(this.value=="friends" && this.value2==false){
           this.$message({
           message: '设置成功！',
           type: 'success'
         });
           this.dialogSelectVisible=false,
-          this.$emit('showDialog2',true)
+          this.$emit('banNoteSuccess',true)
     } else{
           this.$message({
           message: 'APP或通知状态错误，请重新选择！',
@@ -117,10 +117,10 @@ name: 'settingPage',
 
 <style>
 .operateBg{
-  width: 223px;
-  height: 454px;
-  left: 528px;
-  bottom: 57px;
+  width: 212px;
+  height: 440px;
+  left: 533px;
+  bottom: 62px;
   position: absolute;
   z-index: 1;
   animation: zoomIn 0.5s;
@@ -146,20 +146,20 @@ name: 'settingPage',
   cursor: pointer;
 }
 .mask3{
-  width: 211px;
-  height: 27px;
-  left: 534px;
-  bottom: 183px;
+  width: 202px;
+  height: 25px;
+  left: 539px;
+  bottom: 185px;
   position: absolute;
   opacity: 0.1;
   z-index: 100;
   cursor: pointer;
 }
 .mask3:hover{
-  width: 211px;
-  height: 27px;
-  left: 534px;
-  bottom: 183px;
+  width: 202px;
+  height: 25px;
+  left: 539px;
+  bottom: 185px;
   position: absolute;
   opacity: 0.1;
   z-index: 100;
@@ -167,10 +167,10 @@ name: 'settingPage',
   filter: brightness(10%);
 }
 .mask4{
-  width: 210px;
-  height: 27px;
-  left: 534px;
-  bottom: 103px;
+  width: 200px;
+  height: 26px;
+  left: 539px;
+  bottom: 107px;
   position: absolute;
   opacity: 0.6;
   z-index: 100;
@@ -178,20 +178,20 @@ name: 'settingPage',
   animation: fadeIn 0.6s ease-in 3;
 }
 .maskChange4{
-  width: 210px;
-  height: 27px;
-  left: 534px;
-  bottom: 103px;
+  width: 200px;
+  height: 26px;
+  left: 539px;
+  bottom: 107px;
   position: absolute;
   opacity: 0.1;
   z-index: 100;
   cursor: pointer;
 }
 .maskChange4:hover{
-  width: 210px;
-  height: 27px;
-  left: 534px;
-  bottom: 103px;
+  width: 200px;
+  height: 26px;
+  left: 539px;
+  bottom: 107px;
   position: absolute;
   opacity: 0.1;
   z-index: 100;

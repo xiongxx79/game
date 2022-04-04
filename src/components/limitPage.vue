@@ -139,23 +139,34 @@ methods:{
 
 <style>
 .limitBg{
-  width: 223px;
-  height: 455px;
-  left: 528px;
-  bottom: 57px;
+  width: 212px;
+  height: 440px;
+  left: 533px;
+  bottom: 62px;
   position: absolute;
   z-index: 1;
   animation: fadeIn 0.5s;
 }
 .maskOne{
-  width: 207px;
-  height: 39px;
-  left: 537px;
+  width: 197px;
+  height: 37px;
+  left: 541px;
   bottom: 231px;
   position: absolute;
   opacity: 0.1;
-  z-index: 100;
+  z-index: 10;
   cursor: pointer;
+} 
+.maskOne:hover{
+  width: 197px;
+  height: 37px;
+  left: 541px;
+  bottom: 231px;
+  position: absolute;
+  opacity: 0.1;
+  z-index: 10;
+  cursor: pointer;
+  filter: brightness(10%);
 } 
 .maskTwo{
   width: 205px;
@@ -164,28 +175,17 @@ methods:{
   bottom: 193px;
   position: absolute;
   opacity: 0.1;
-  z-index: 100;
+  z-index: 10;
   cursor: pointer;
-} 
-.maskOne:hover{
-  width: 207px;
-  height: 39px;
-  left: 537px;
-  bottom: 231px;
-  position: absolute;
-  opacity: 0.1;
-  z-index: 100;
-  cursor: pointer;
-  filter: brightness(10%);
 } 
 .maskTwo:hover{
-  width: 205px;
+  width: 197px;
   height: 38px;
-  left: 537px;
+  left: 541px;
   bottom: 193px;
   position: absolute;
   opacity: 0.1;
-  z-index: 100;
+  z-index: 10;
   cursor: pointer;
   filter: brightness(10%);
 } 
@@ -196,7 +196,7 @@ methods:{
   bottom: 80px;
   position: absolute;
   opacity: 0.1;
-  z-index: 100;
+  z-index: 10;
   cursor: pointer;
 }
 

@@ -1,21 +1,51 @@
 <template>
-  <div class="oneWrap3">
+  <div class="bgWrap">
+    <div class="bgOut"></div>
+    <img src="../../assets/phonedesk.png" class="bgIn" /> 
+
+    <el-tooltip class="item" effect="dark" content="手机“设置”里的数字健康功能可以限制应用程序的使用时间" placement="right">
+      <el-button>💡已获提示</el-button>
+    </el-tooltip>
+
+    <el-tooltip class="item2" effect="dark" content="把刘凯每天玩游戏的时间限制为30分钟应该有用" placement="right">
+      <el-button>💡已获提示</el-button>
+    </el-tooltip>
+
+    <p class="levelTipS6">在25s内救出刘凯，速度越快，奖励越丰富哦！</p>
+
     <audio autoplay loop>
       <source src="../../assets/bgm2.mp3" type="audio/mp3" />
     </audio>
-    <img 
-    src="../../assets/tip1.png" 
-    class="tip1" 
-    v-if="tipShow1">
 
-    <img 
-    src="../../assets/tipBtn.png" 
-    class="tipBtn" 
-    v-if="tipShow1" 
-    @click.once="tipDis">
+    <div class="cardBox">
+        {{"倒计时："+times+"秒"}}
+    </div>
+
+     <div class="gameOver" v-show="successShow">
+       <div class="overText">解救成功<br/>用时{{35-times}}秒</div>
+       <el-button type="success" plain class="overBtn" @click="showReward">继续</el-button>
+     </div>
+
+      <div class="gameOver" v-show="rewardShow">
+        <div class="rewardText">恭喜你！解锁{{a}}张背景图！{{b}}张贴纸！</div><br/><br/>
+          <div style="text-align:center;">
+            <img src="../../assets/choicePhone1.png" class="rewardPhone" v-if="rewardPhone1">
+            <img src="../../assets/choicePhone2.png" class="rewardPhone" v-if="rewardPhone2">
+            <img src="../../assets/stick1.png" class="rewardStick" v-if="rewardStick1">
+            <img src="../../assets/stick2.png" class="rewardStick" v-if="rewardStick2">
+            <img src="../../assets/stick3.png" class="rewardStick" v-if="rewardStick3">
+          </div>
+          <br/>
+            <el-button type="success" plain class="overBtn" @click="sJump6">继续</el-button>
+      </div>
+
+     <div class="gameOver" v-show="overShow">
+        <p class="overText">解救失败</p>
+        <el-button type="danger" plain class="overBtn" @click="reStart">重新开始</el-button>
+     </div>
 
     <div>
-        <img 
+        <img
         src="../../assets/settingicon.png" 
         class="settingicon" 
         @click="showSetting">
@@ -46,16 +76,6 @@
       @toDesk="toDesk"
       @showLimit="showLimit">
     </settingPage>
-
-    <img 
-    src="../../assets/tip2.png" 
-    class="tip1" 
-    v-if="tipShow2">
-    <img 
-    src="../../assets/tipBtn.png" 
-    class="tipBtn" 
-    v-if="tipShow2" 
-    @click.once="tipDis">
 
     <img 
     src="../../assets/stopTime.png" 
@@ -99,32 +119,7 @@
       v-show="limitShow" 
       @showSuccess="showSuccess"
       @backSetting="backSetting">
-     </limitPage>
-
-    <img 
-    src="../../assets/successBg1.png" 
-    class="successBg1" 
-    v-if="successShow">
-    <img src="../../assets/alertCard.png" 
-    class="alertCard" 
-    v-if="successShow" 
-    @click.once="card1=true">
-
-    <img src="../../assets/card1.png" 
-    class="cards" 
-    v-if="card1" >
-    <img src="../../assets/cardBtn.png" 
-    class="cardBtn" 
-    v-if="card1" 
-    @click="card1=false,card2=true">
-    <img src="../../assets/card2.png" 
-    class="cards" 
-    v-if="card2" >
-    <img 
-    src="../../assets/nextLevelBtn.png" 
-    class="cardBtn" 
-    v-if="card2" 
- >
+    </limitPage>
 
   </div>
 </template>
@@ -139,26 +134,31 @@ export default {
   data(){
     return{
       setShow:false,
-      tipShow1:true,
-      tipShow2:false,
       timeShow:false,
       scheduleShow:false,
       gameShow:false,
       limitShow:false,
       successShow:false,
-      card1:false
+      times: 35,
+      overShow:false,
+      rewardShow:false,
+      a:1,
+      b:1,
+      rewardPhone1:false,
+      rewardPhone2:false,
+      rewardStick1:false,
+      rewardStick2:false,
+      rewardStick3:false,
     }
   },
+
+  created() {
+    this.getTime();   //只要该页面一渲染创建，就开始倒计时
+  },
+
   methods:{
     showSetting(){
       this.setShow=true
-    },
-    tipDis(){
-      this.tipShow1=false
-      this.tipShow2=false
-    },
-    showTip(data){
-      this.tipShow2 = data
     },
     toDesk(){
       this.setShow=false
@@ -193,7 +193,53 @@ export default {
       this.setShow=data
       this.limitShow=!data
     },
+    getTime() {
+      this.timer = setInterval(()=>{
+        this.times--
+        if(this.times===0){
+          clearInterval(this.timer)
+          this.overShow=true
+        }else{
+          if(this.successShow==true){
+             clearInterval(this.timer)
+          }
+        }
+      },1000)
+    },
+    reStart(){
+        window.location.reload()
+    },
+    showReward(){
+      if(35-this.times>25){
+        this.a=0
+        this.b=2
+        this.rewardStick1=true
+        this.rewardStick2=true
+      }else{
+        if(35-this.times>15){
+        this.a=1
+        this.b=2
+        this.rewardPhone1=true
+        this.rewardStick1=true
+        this.rewardStick2=true
+        }else{
+        this.a=2
+        this.b=3
+        this.rewardPhone1=true
+        this.rewardPhone2=true
+        this.rewardStick1=true
+        this.rewardStick2=true
+        this.rewardStick3=true
+        }
+      }
+      this.rewardShow=true
+      this.successShow=false
+    },
+    sJump6 () {
+      this.$router.push({ path: '/levelone/s7' })
+    },
   },
+
   components:{
     settingPage,
     limitPage
@@ -202,12 +248,6 @@ export default {
 </script>
 
 <style>
-.oneWrap3{
-  width: 100%;
-  height: 100%;
-  background: #39619b url("../../assets/phonedesk.png") top/80% 100% no-repeat;
-  background-size: contains;
-}
 .settingicon{
   width: 40px;
   height: 40px;
@@ -304,25 +344,6 @@ export default {
   cursor: pointer;
   filter: brightness(80%);
 }
-.tip1{
-  width: 400px;
-  height: 250px;
-  left: 450px;
-  bottom: 150px;
-  position: absolute;
-  z-index: 1000;
-  animation:fadeIn 2s;
-}
-.tipBtn{
-  width: 130px;
-  height: 45px;
-  left: 570px;
-  bottom: 195px;
-  position: absolute;
-  z-index: 10000;
-  cursor: pointer;
-  animation:fadeIn 2s;
-}
 .stopTime{
   width:420px;
   height: 200px;
@@ -371,41 +392,51 @@ export default {
   animation: fadeIn 2s;
   cursor: pointer;
 }
-.successBg1{
-  width: 76%;
-  height: 100%;
-  left: 12%;
+.levelTipS6{
+  width: 200px;
+  height: 50px;
+  background: #000000;
+  font-size: 18px;
+  color: #ffffff;
+  opacity: 0.7;
+  padding: 20px;
+  left: 200px;
+  top:50px;
   position: absolute;
-  animation:zoomIn 1s;
-  z-index: 100;
+  animation: wobble 2s;
+  text-align: left;
+  z-index: 10;
 }
-.alertCard{
+.cardBox{
+  background: #000000;
+  font-size: 18px;
+  color: #ffffff;
+  right: 200px;
+  top:50px;
+  position: absolute;
+  z-index: 10;
+  padding: 10px;
+  opacity: 0.7;
+}
+.rewardText{
+  margin-top: 130px;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 600;
+}
+.rewardPhone{
   width: 100px;
-  height: 45px;
-  left: 47%;
-  bottom: 35px;
-  position: absolute;
-  cursor: pointer;
-  animation: fadeIn 3s;
-  z-index: 1000;
+  height: 50px;
+  margin-top: 20px;
+  left: 200px;
+  top: 200px;
+  margin-left: 20px;
 }
-.cards{
-  width: 280px;
-  height: 390px;
-  left: 480px;
-  top: 80px;
-  position: absolute;
-  animation: flip 0.7s ;
-  z-index: 10000;
-}
-.cardBtn{
-  width: 75px;
-  height: 30px;
-  left: 590px;
-  bottom: 180px;
-  position: absolute;
-  cursor: pointer;
-  animation: fadeIn 3s;
-  z-index: 10000;
+.rewardStick{
+  width: 80px;
+  height: 80px;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 </style>

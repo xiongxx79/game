@@ -6,7 +6,7 @@
       <button class="conti" v-show="isShow1" @click="handleToNext" >
       ▼ 继续
       </button>
-      <img src="../assets/hero.png" class="img" />
+      <img src="../assets/hero.png" class="img"/>
     </div>
   </div>
 </template>
@@ -51,10 +51,10 @@ export default {
   left: 12%;
   bottom:2%;
   width:76%;
-  height:20%;
+  height:15%;
   position: absolute;
 }
-.img {
+.img{
   width: 135px;
   height: 180px;
   position: absolute;

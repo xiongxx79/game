@@ -6,28 +6,20 @@
 
     <div class="mapMap" v-show="mapShow">
         <img src="../../assets/bigMap.png" class="bigMap">
-        <img src="../../assets/L1.png" class="L1" @click="toLevelOne">
-        <img src="../../assets/L2.png" class="L2" @click="toLevelTwo">
-        <img src="../../assets/L3.png" class="L3" @click="toLevelThree">
-        <img src="../../assets/phoneStore.png" class="phoneStore" @click="toDesignActivity">
+        <img src="../../assets/L1.png" class="L1">
+        <img src="../../assets/L2.png" class="L2">
+        <img src="../../assets/L3.png" class="L3">
+        <img src="../../assets/phoneStore.png" class="phoneStore">
     </div>
 
-    <div class="startGame" v-show="startShow">
+     <div class="startGame" v-show="startShow">
       <p class="gameName">逃离暗黑手机</p>
       <img 
       src="../../assets/startGameBtn.png" 
       class="startGameBtn"
-      @click="startShow=false,startTipsShow=true">
+      @click="jumpDu">
     </div>
 
-    <div>
-      <p class="startTips" v-show="startTipsShow">
-        √ 初次游戏请按顺序选择关卡哦！
-        <br/>
-        √ 前三关可以获得丰富的手机壳制作材料！
-      </p>
-
-    </div>
   </div>
 </template>
 
@@ -43,32 +35,22 @@ export default {
   }
 },
 created(){
-      setTimeout(this.valChange,3100);
+    setTimeout(this.valChange,3100);
 },
  methods: {
-    toLevelOne(){
-      this.$router.push({ path: '/levelone/s1' })        
-     },
-    toLevelTwo(){
-      this.$router.push({ path: '/leveltwo/s1' })        
-     },
-    toLevelThree(){
-      this.$router.push({ path: '/levelthree/s1' })        
-     },
-    toDesignActivity(){
-      this.$router.push({ path: '/end/s1' })     
-     },
     valChange() {
       this.loadShow=false;
       this.startShow=true;
       this.mapShow=true
-    }
-  },
+    },
   beforeDestroy() {
     clearTimeout(this.timer);
   },
-
- }
+  jumpDu(){
+      this.$router.push({ path: '/start' })        
+     },
+}
+}
 </script>
 
 <style>
@@ -106,6 +88,30 @@ created(){
   height: 500px;
   margin-left: 200px;
   margin-top: 40px;
+}
+.startGame{
+  left: 12%;
+  top:2%;
+  width:76%;
+  height:96%;
+  background: #000000;
+  opacity: 0.76;
+  position: absolute;
+  z-index: 10;
+}
+.gameName{
+  margin-top: 130px;
+  font-size: 72px;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 600;
+}
+.startGameBtn{
+  width: 180px;
+  height: 80px;
+  margin-left: 40%;
+  margin-top: 30px;
+  cursor: pointer;
 }
 .L1{
   width:100px;
@@ -178,40 +184,5 @@ created(){
   position: absolute;
   cursor:pointer;
   filter: brightness(1.1);
-}
-.startGame{
-  left: 12%;
-  top:2%;
-  width:76%;
-  height:96%;
-  background: #000000;
-  opacity: 0.76;
-  position: absolute;
-  z-index: 10;
-}
-
-.gameName{
-  margin-top: 130px;
-  font-size: 72px;
-  color: #ffffff;
-  text-align: center;
-  font-weight: 600;
-}
-.startGameBtn{
-  width: 180px;
-  height: 80px;
-  margin-left: 40%;
-  margin-top: 30px;
-  cursor: pointer;
-}
-.startTips{
-  font-size: 18px;
-  color: #ffffff;
-  position: absolute;
-  right: 150px;
-  top: 30px;
-  text-align: right;
-  z-index: 100;
-  animation: wobble 1s;
 }
 </style>

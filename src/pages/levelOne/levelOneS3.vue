@@ -2,17 +2,14 @@
   <div class="bgWrap">
     <div class="bgOut"></div>
     <img src="../../assets/attackOneBg.png" class="bgIn" />
+    <img src="../../assets/butterfly2.gif" class="butterfly2" />
 
-    <img
-      src="../../assets/phoneSoldier.png"
-      :class="{
-        soldier: true,
-        animate__animated: showJello,
-        animate__jello: showJello,
-      }"
-    />
+    <img src="../../assets/phoneSoldier1.png" class="soldier1" v-show="badFaceShow"/>
+    <img src="../../assets/phoneSoldier2.png" class="soldier2" v-show="hurtFaceShow"/>
 
-    <p class="soldierTalk">
+    <img src="../../assets/phoneSoldier1.png" class="soldier11" v-show="badFaceShow11"/>
+
+    <p class="soldierTalk" v-show="badFaceShow">
       没想到你竟然能找到这里，不过有我的守卫，你是救不出朋友的，死了这条心吧！
     </p>
 
@@ -22,6 +19,10 @@
     <p class="levelTip2" v-if="blood1Show">
       快捡起地上的石子攻击暗黑小兵！攻击失败小兵会恢复生命值
     </p>
+
+    <el-tooltip class="item" effect="dark" content="手机“设置”里的数字健康功能可以限制应用程序的使用时间" placement="right">
+      <el-button>💡已获提示</el-button>
+    </el-tooltip>
 
     <div>
       <img
@@ -55,14 +56,11 @@
         v-if="stone5Show"
       />
     </div>
-    <img src="../../assets/hurtFace.png" class="face" v-show="hurtFaceShow" />
-    <img src="../../assets/badFace.png" class="face" v-show="badFaceShow" />
 
     <div class="boloodAll">
-      <img src="../../assets/blood1.png" class="blood" v-if="blood1Show" />
-      <img src="../../assets/blood2.png" class="blood" v-if="blood2Show" />
-      <img src="../../assets/blood3.png" class="blood" v-if="blood3Show" />
-      <img src="../../assets/bloodOut.png" class="blood" v-if="bloodOut" />
+      <img src="../../assets/blood1.png" class="bloods1" v-if="blood1Show" />
+      <img src="../../assets/blood2.png" class="bloods1" v-if="blood2Show" />
+      <img src="../../assets/blood3.png" class="bloods1" v-if="blood3Show" />
     </div>
 
     <choiceQuestion
@@ -80,35 +78,38 @@
       >
     </div>
 
+    <img src="../../assets/tipPhone.png" class="tipPhone" v-show="tipPhoneShow" @click="tipsShow=true,tipPhoneShow=false"/>
+
     <div class="gameOver" v-show="tipsShow">
       <div style="margin-left: 140px">
         <div class="tipsOut">
           <p class="tipsTitle">提示1：</p>
           <br /><br />
-          <p style="font-size: 18px">
-            √
-            刘凯已经很长时间离不开自己的手机了，手机不在身边就觉得心慌，熬夜玩手机导致他睡眠严重不足，总感到很疲倦，轻而易举就被手机控制了。
+          <p style="font-size:16px;margin:20px;font-weight:600;">
+          💡刘凯已经很长时间离不开自己的手机了，手机不在身边就觉得心慌，熬夜玩手机导致他睡眠严重不足，总感到很疲倦，轻而易举就被手机控制了
           </p>
           <br />
         </div>
         <div class="tipsOut">
           <p class="tipsTitle">提示2：</p>
           <br /><br />
-          <p style="font-size: 18px">
-            √ 把刘凯每天玩游戏的时间限制为30分钟应该有用。
+          <p style="font-size:16px;margin:20px;font-weight:600;">
+          💡把刘凯每天玩游戏的时间限制为30分钟应该有用
           </p>
-          <br /><br /><br />
+          <br/>
           <el-button
             type="success"
             plain
             style="margin-left: 15%; font-weight: 600"
-            @click="sJump3"
+            @click="showDoorLock"
           >
             去仓库大门看看
           </el-button>
         </div>
       </div>
     </div>
+
+        <img src="../../assets/doorLock.png" class="doorLock" v-if="doorLockShow" @click="sJump3"/>
   </div>
 </template>
 
@@ -120,6 +121,9 @@ export default {
   name: 'levelOneS3',
   data () {
     return {
+      doorLockShow:false,
+      tipPhoneShow:false,
+      badFaceShow11:false,
       quesShow: false,
       bloodShow: false,
       hurtFaceShow: false,
@@ -136,7 +140,6 @@ export default {
       overShow: false,
       bloodOut: false,
       tipsShow: false,
-      showJello: false,
       b: 3,
       question: {},
       talkList: [
@@ -173,7 +176,7 @@ export default {
           solution: 1
         },
         {
-          title: '刘凯经常在骑自行车的时候看手机，有一天他边骑车边发微信，差点撞到两个同学。他自己也摔倒在地，膝盖都磨破了。他应该（）。',
+          title: '刘凯经常在骑自行车的时候看手机，有一天他边骑车边发微信，差点撞到两个同学。他自己也摔倒在地，膝盖都磨破了。他应该（）',
           answerList: [
             {
               value: 1,
@@ -221,20 +224,14 @@ export default {
     showBtn () {
       this.bloodOut = true
       this.blood1Show = true
-      this.blood2Show = true
-      this.blood3Show = true
+      this.blood2Show = false
+      this.blood3Show = false
       this.dialogShow = false
       this.stone1Show = true
       this.stone2Show = true
       this.stone3Show = true
       this.stone4Show = true
       this.stone5Show = true
-    },
-    reStart () {
-      window.location.reload()
-    },
-    sJump3 () {
-      this.$router.push({ path: '/levelone/s4' })
     },
     handleToClick (num) {
       if (num == 0) {
@@ -271,23 +268,35 @@ export default {
           that.badFaceShow = true
           that.hurtFaceShow = false
         }, 2000)
-        this.showJello = true
         this.quesShow = false
         this.question = {}
         if (this.b == 3) {
           this.blood1Show = false
+          this.blood2Show = true
+          this.blood3Show = false
           this.b -= 1
         } else {
           if (this.b == 2) {
-            this.blood2Show = false
+          this.blood1Show = false
+          this.blood2Show = false
+          this.blood3Show = true
             this.b -= 1
           } else {
-            this.blood3Show = false
+          this.blood1Show = false
+          this.blood2Show = false
+          this.blood3Show = false
             this.b -= 1
           }
         }
-        if (this.blood3Show == false) {
-          alert('chenggong')
+        if (this.blood1Show == false && this.blood2Show == false && this.blood3Show == false) {
+           setTimeout(() => {
+           this.badFaceShow = false
+           this.badFaceShow11=true
+        }, 2000)
+            setTimeout(() => {
+           this.badFaceShow11=false
+           this.tipPhoneShow=true
+        }, 3000)
         }
       } else {
         this.$message({
@@ -298,24 +307,42 @@ export default {
         this.question = {}
         if (this.b != 3) {
           if (this.b == 2) {
-            this.b += 1
-            this.blood1Show = true
+             this.b += 1
+          this.blood1Show = true
+          this.blood2Show = false
+          this.blood3Show = false
           } else {
             if (this.b == 1) {
               this.b += 1
-              this.blood2Show = true
+          this.blood1Show = false
+          this.blood2Show = true
+          this.blood3Show = false
             } else {
               this.b += 1
-              this.blood3Show = true
+          this.blood1Show = false
+          this.blood2Show = false
+          this.blood3Show = true
             }
           }
         }
         if (this.stone1Show == false && this.stone2Show == false && this.stone3Show == false
-          && this.stone4Show == false && this.stone5Show == false && this.blood3Show == true) {
-          this.overShow = true
-        }
+          && this.stone4Show == false && this.stone5Show == false) {
+              if(this.blood1Show==true || this.blood2Show==true || this.blood3Show==true){
+              this.overShow = true
+              }
       }
     }
+  },
+    showDoorLock(){
+       this.tipsShow=false
+       this.doorLockShow=true
+     },
+    reStart () {
+      window.location.reload()
+    },
+    sJump3 () {
+      this.$router.push({ path: '/levelone/s4' })
+    },
   },
   components: {
     choiceQuestion,
@@ -412,46 +439,22 @@ export default {
   cursor: pointer;
   font-weight: 600;
 }
-.tipsOut {
-  background: #ffffff;
-  width: 220px;
-  height: 300px;
-  color: #67c23a;
-  margin-top: 130px;
-  margin-left: 50px;
-  z-index: 100;
-  display: inline-table;
-  padding: 20px;
-}
-.tipsTitle {
-  background: #67c23a;
-  width: 70px;
-  height: 20px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #ffffff;
-  z-index: 100;
-  display: inline-table;
-  padding: 12px;
-}
-.soldier {
+.soldier1 {
   width: 250px;
   height: 300px;
   right: 450px;
   top: 150px;
   position: absolute;
-  animation: fadeIn 2s;
   z-index: 10;
 }
-.face {
-  width: 120px;
-  height: 12s0px;
+.soldier2 {
+  width: 250px;
+  height: 300px;
+  right: 450px;
+  top: 150px;
   position: absolute;
-  right: 515px;
-  top: 225px;
+  animation: jello 1s;
   z-index: 10;
-  transform: rotate(-5deg);
-  animation: fadeIn 2s;
 }
 .soldierTalk {
   width: 300px;
@@ -461,8 +464,8 @@ export default {
   color: #ffffff;
   opacity: 0.8;
   padding: 20px;
-  right: 550px;
-  top: 90px;
+  right: 190px;
+  top: 140px;
   animation: fadeIn 2s;
   position: absolute;
 }
@@ -476,12 +479,66 @@ export default {
   text-align: center;
   animation: wobble 1s;
 }
-.blood {
+.bloods1{
   border: none;
   width: 200px;
   height: 50px;
-  right: 310px;
-  top: 255px;
+  right: 500px;
+  top: 90px;
   position: absolute;
 }
+.doorLock{
+  width: 80px;
+  height: 60px;
+  position: absolute;
+  right: 210px;
+  bottom: 220px;
+  animation: fadeIn 5s;
+  cursor: pointer;
+}
+.soldier11 {
+  width: 250px;
+  height: 300px;
+  right: 450px;
+  top: 150px;
+  position: absolute;
+  z-index: 100;
+  animation: zoomOut 1s;
+}
+.tipPhone {
+  right: 500px;
+  bottom: 150px;
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  cursor: pointer;
+  animation: flash 3s infinite;
+}
+.butterfly2{
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  left: 210px;
+  bottom: 220px;
+  transform: rotate(-45deg);
+}
+.item {
+      margin: 4px;
+      position: absolute;
+      left: 149px;
+      top:150px
+    }
+
+.item2 {
+      margin: 4px;
+      position: absolute;
+      left: 143px;
+      top:200px
+    }
+.item3 {
+      margin: 4px;
+      position: absolute;
+      left: 143px;
+      top:250px
+    }
 </style>

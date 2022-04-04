@@ -58,7 +58,7 @@ export default {
   align-items: center;
   flex-direction: column;
   background: #000000;
-  opacity: 0.86;
+  opacity: 0.9;
   z-index: 10;
   left: 12%;
   top:2%;
@@ -88,7 +88,7 @@ export default {
   align-content: center;
 }
 .btnList {
-  width: 300px;
+  width: 400px;
   height: 35px;
   margin-bottom: 20px;
   text-align: center;
