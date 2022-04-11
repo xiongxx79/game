@@ -3,6 +3,10 @@
     <div class="bgOut"></div>
      <img src="../../assets/mengmeng.png" class="bgIn">
 
+    <audio id="liukai3">
+      <source src="../../assets/liukai3.mp3" type="audio/mp3" />
+    </audio>
+
     <el-tooltip class="item" effect="dark" content="“交友圈”大量的消息提醒让梦梦很烦躁" placement="right">
       <el-button>💡已获提示</el-button>
     </el-tooltip>
@@ -20,7 +24,7 @@
       type="info" 
       plain
       v-if="buttonShow5"
-      @click="liuDialogShow=true"
+      @click="showLiuDialog"
       >
       喊她试试
       </el-button><br/><br/>
@@ -28,7 +32,7 @@
       type="info" 
       plain
       v-if="buttonShow5"
-      @click="liuDialogShow=true"
+      @click="showLiuDialog"
       >
       推她试试
       </el-button>
@@ -69,6 +73,10 @@ methods:{
     s2Jump5 () {
       this.$router.push({ path: '/leveltwo/s6' })
     },
+    showLiuDialog(){
+      document.getElementById('liukai3').play()
+      this.liuDialogShow=true
+    },
     showBtnLiu(){
         this.lightShow=true
     }
@@ -90,7 +98,7 @@ components:{
 }
 .ylight2{
   left: 530px;
-  bottom: 50px;
+  bottom: 130px;
   position: absolute;
   cursor: pointer;
   width:  100px;

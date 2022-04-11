@@ -3,6 +3,10 @@
     <div class="bgOut"></div>
         <img src="../../assets/level3Bg1.png" class="bgIn">
 
+    <audio autoplay>
+      <source src="../../assets/hero6.mp3" type="audio/mp3" />
+    </audio>
+
         <myDialog 
             @showButton="showBtn" 
             :talkList="talkList">

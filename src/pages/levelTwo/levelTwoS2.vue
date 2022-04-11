@@ -4,8 +4,24 @@
         <img src="../../assets/levelTwoBg.png" class="bgIn">
         <img src="../../assets/butterfly1.gif" class="butterfly1">
 
-    <audio autoplay loop>
+    <audio id="overMusic">
+      <source src="../../assets/overMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio autoplay loop id="bgMusic22">
       <source src="../../assets/bgm1.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="attackSuccessMusic">
+      <source src="../../assets/attackSuccessMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="wrongAudio">
+      <source src="../../assets/wrongAudio.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="correctAudio">
+      <source src="../../assets/correctAudio.mp3" type="audio/mp3" />
     </audio>
 
     <p class="levelTip">捡起木板搭一座木桥过河</p>
@@ -268,9 +284,12 @@ data(){
           message: '回答正确！',
           type: 'success'
         })
+        document.getElementById('correctAudio').play()
         this.quesShow = false
         this.question = {}
         if(this.woodBoard1Show==false && this.woodBoard2Show==false && this.woodBoard3Show==false && this.woodBoard4Show==false && this.woodBoard5Show==false){
+           document.getElementById('bgMusic22').pause()
+           document.getElementById('attackSuccessMusic').play()
            this.tipsShow=true
         }
       } else {
@@ -278,12 +297,15 @@ data(){
           message: '回答错误！',
           type: 'error'
         });
+        document.getElementById('wrongAudio').play()
        if(this.a==2){
          this.a-=1;
          this.life2=false
        }else{
            this.a-=1;
            this.life1=false
+           document.getElementById('bgMusic22').pause()
+           document.getElementById('overMusic').play()
            this.overShow=true
        }
       }

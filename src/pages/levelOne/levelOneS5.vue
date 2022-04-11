@@ -3,6 +3,10 @@
     <div class="bgOut"></div>
      <img src="../../assets/liuKai.png" class="bgIn">
 
+    <audio id="hero3">
+      <source src="../../assets/hero3.mp3" type="audio/mp3" />
+    </audio>
+
     <el-tooltip class="item" effect="dark" content="手机“设置”里的数字健康功能可以限制应用程序的使用时间" placement="right">
       <el-button>💡已获提示</el-button>
     </el-tooltip>
@@ -16,7 +20,7 @@
       type="info" 
       plain
       v-if="buttonShow5"
-      @click="dialogShow=true"
+      @click="pushAndCall"
       >
       喊他试试
       </el-button><br/><br/>
@@ -24,7 +28,7 @@
       type="info" 
       plain
       v-if="buttonShow5"
-      @click="dialogShow=true"
+      @click="pushAndCall"
       >
       推他试试
       </el-button>
@@ -63,6 +67,10 @@ data(){
 },
 
 methods:{
+    pushAndCall(){
+      this.dialogShow=true
+      document.getElementById('hero3').play()
+    },
     sJump5 () {
       this.$router.push({ path: '/levelone/s6' })
     },

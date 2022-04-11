@@ -3,6 +3,30 @@
     <div class="bgOut"></div>
         <img src="../../assets/levelTwoAttackBg.png" class="bgIn">
 
+    <audio autoplay>
+      <source src="../../assets/phones3.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="overMusic">
+      <source src="../../assets/overMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio autoplay loop id="bgMusic23">
+      <source src="../../assets/attackBgMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="attackSuccessMusic">
+      <source src="../../assets/attackSuccessMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="wrongAudio">
+      <source src="../../assets/wrongAudio.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="correctAudio">
+      <source src="../../assets/correctAudio.mp3" type="audio/mp3" />
+    </audio>
+
     <el-tooltip class="item" effect="dark" content="“交友圈”大量的消息提醒让梦梦很烦躁" placement="right">
       <el-button>💡已获提示</el-button>
     </el-tooltip>
@@ -259,6 +283,7 @@ export default {
           message: '回答正确！',
           type: 'success'
         })
+        document.getElementById('correctAudio').play()
         this.badFaceShow = false
         this.hurtFaceShow = true
         const that = this
@@ -288,6 +313,8 @@ export default {
         }
         if (this.blood1Show == false && this.blood2Show == false && this.blood3Show == false) {
            setTimeout(() => {
+           document.getElementById('attackSuccessMusic').play()
+           document.getElementById('bgMusic23').pause()
            this.badFaceShow = false
            this.badFaceShow11=true
         }, 2000)
@@ -301,6 +328,7 @@ export default {
           message: '回答错误！',
           type: 'error'
         })
+        document.getElementById('wrongtAudio').play()
         this.quesShow = false
         this.question = {}
         if (this.b != 3) {
@@ -326,6 +354,8 @@ export default {
         if (this.crabStick1Show == false && this.crabStick2Show == false && this.crabStick3Show == false
           && this.crabStick4Show == false && this.crabStick5Show == false) {
               if(this.blood1Show==true || this.blood2Show==true || this.blood3Show==true){
+              document.getElementById('bgMusic23').pause()
+              document.getElementById('overMusic').play() 
               this.overShow = true
               }
           

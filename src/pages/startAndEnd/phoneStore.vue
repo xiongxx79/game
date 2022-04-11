@@ -1,7 +1,20 @@
 <template>
   <div class="bgWrap">
     <div class="bgOut"></div>
-           <img src="../../assets/storeBg.png" class="bgIn" style="opacity:0.9">
+      <img src="../../assets/storeBg.png" class="bgIn" style="opacity:0.9">
+
+        <el-button 
+           type="success" 
+           plain 
+           class="backMapBtn0"
+           @click="jumpMap">
+           返回地图
+        </el-button>
+
+    <audio autoplay loop>
+      <source src="../../assets/bgm2.mp3" type="audio/mp3" />
+    </audio>
+
      <div class="choicePhoneWrap">
       <p class="phoneText">我的背景图</p>
       <img
@@ -155,6 +168,9 @@ export default {
   },
 
   methods: {
+    jumpMap () {
+      this.$router.push({ path: '/map' })
+    },
     resize (newRect) {
       this.width = newRect.width
       this.height = newRect.height
@@ -233,5 +249,12 @@ export default {
   position: absolute;
   left: 350px;
   top: 40px;
+}
+.backMapBtn0{
+    position: absolute;
+    top: 20px;
+    right: 165px;
+    animation: fadeIn 1s;
+    font-weight: 600;
 }
 </style>

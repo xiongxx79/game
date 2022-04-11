@@ -1,6 +1,11 @@
 <template>
   <div class="bgWrap3">
     <div class="bgOut"></div>
+
+    <audio id="hero8">
+      <source src="../../assets/hero8.mp3" type="audio/mp3" />
+    </audio>
+
     <video
       autoplay
       class="bgIn"
@@ -49,6 +54,7 @@ export default {
     stopVideoagain () {
       this.eshow1 = false
       this.eshow2 = true
+      document.getElementById('hero8').play()
     },
     s3jump6(){
       this.$router.push({ path: '/levelthree/s7' })

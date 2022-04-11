@@ -1,7 +1,23 @@
 <template>
   <div class="bgWrap3">
     <div class="bgOut"></div>
-        <img src="../../assets/phonedesk.png" class="bgIn" /> 
+      <img src="../../assets/phonedesk.png" class="bgIn" />
+
+    <audio id="overMusic">
+      <source src="../../assets/overMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio autoplay loop id='bgMusic37'>
+      <source src="../../assets/bgm2.mp3" type="audio/mp3" />
+    </audio>
+  
+    <audio autoplay loop id='countDownMusic'>
+      <source src="../../assets/countDown.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="successSave">
+      <source src="../../assets/successSave.mp3" type="audio/mp3" />
+    </audio>
 
     <el-tooltip class="item" effect="dark" content="爸爸一有空就在手机上看短视频，妈妈和他讲话常常得不到回应，两人总是吵架" placement="right">
       <el-button>💡已获提示</el-button>
@@ -15,14 +31,10 @@
       <el-button>💡已获提示</el-button>
     </el-tooltip>
 
-        <p class="levelTipS6">在15s内救出父亲，速度越快，奖励越丰富哦！</p>
-
-    <audio autoplay loop>
-      <source src="../../assets/bgm2.mp3" type="audio/mp3" />
-    </audio>
+    <p class="levelTipS6">在25s内救出父亲，速度越快，奖励越丰富哦！</p>
 
     <div class="cardBox">
-        {{"倒计时："+times+"秒"}}
+        {{"倒计时：" + times + "秒"}}
     </div>
 
      <div class="gameOver" v-show="successShow">
@@ -123,6 +135,9 @@ export default {
       this.limitShow=!data
     },
     rightBan(data){
+      document.getElementById('bgMusic37').pause()
+      document.getElementById('countDownMusic').pause()
+      document.getElementById('successSave').play()      
       this.successShow=data
       this.limitShow=false
     },
@@ -132,6 +147,11 @@ export default {
         if(this.times===0){
           clearInterval(this.timer)
           this.overShow=true
+          this.limitShow=false
+          this.setShow=false
+          document.getElementById('bgMusic37').pause()
+          document.getElementById('countDownMusic').pause()
+          document.getElementById('overMusic').play()
         }else{
           if(this.successShow==true){
              clearInterval(this.timer)
@@ -177,7 +197,6 @@ export default {
     limitPage
   }
 }
-
 </script>
 
 

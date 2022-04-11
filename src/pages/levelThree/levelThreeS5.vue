@@ -3,6 +3,30 @@
     <div class="bgOut"></div>
     <img src="../../assets/daddy.png" class="bgIn" />
 
+    <audio autoplay>
+      <source src="../../assets/phones4.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="overMusic">
+      <source src="../../assets/overMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio autoplay loop id="bgMusic35">
+      <source src="../../assets/attackBgMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="attackSuccessMusic">
+      <source src="../../assets/attackSuccessMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="wrongAudio">
+      <source src="../../assets/wrongAudio.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="correctAudio">
+      <source src="../../assets/correctAudio.mp3" type="audio/mp3" />
+    </audio>
+
     <el-tooltip class="item" effect="dark" content="爸爸一有空就在手机上看短视频，妈妈和他讲话常常得不到回应，两人总是吵架" placement="right">
       <el-button>💡已获提示</el-button>
     </el-tooltip>
@@ -266,6 +290,7 @@ export default {
           message: '回答正确！',
           type: 'success'
         })
+        document.getElementById('correctAudio').play()
         this.badFaceShow = false
         this.hurtFaceShow = true
         const that = this
@@ -295,6 +320,8 @@ export default {
         }
         if (this.blood1Show == false && this.blood2Show == false && this.blood3Show == false) {
            setTimeout(() => {
+           document.getElementById('attackSuccessMusic').play()
+           document.getElementById('bgMusic35').pause()
            this.badFaceShow = false
            this.badFaceShow11=true
         }, 2000)
@@ -308,6 +335,7 @@ export default {
           message: '回答错误！',
           type: 'error'
         })
+        document.getElementById('wrongAudio').play()
         this.quesShow = false
         this.question = {}
         if (this.b != 3) {
@@ -333,7 +361,9 @@ export default {
         if (this.crabStick1Show == false && this.crabStick2Show == false && this.crabStick3Show == false
           && this.crabStick4Show == false && this.crabStick5Show == false) {
               if(this.blood1Show==true || this.blood2Show==true || this.blood3Show==true){
-              this.overShow = true
+                 document.getElementById('bgMusic35').pause()
+                 document.getElementById('overMusic').play()
+                 this.overShow = true
               }
       }
     }

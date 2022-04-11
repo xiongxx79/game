@@ -3,8 +3,24 @@
     <div class="bgOut"></div>
     <img src="../../assets/clueFindOne.jpg" class="bgIn" />
 
-    <audio autoplay loop>
+    <audio autoplay loop id="bgMusic12">
       <source src="../../assets/bgm1.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="attackSuccessMusic">
+      <source src="../../assets/attackSuccessMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="wrongAudio">
+      <source src="../../assets/wrongAudio.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="correctAudio">
+      <source src="../../assets/correctAudio.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="overMusic">
+      <source src="../../assets/overMusic.mp3" type="audio/mp3" />
     </audio>
 
     <p class="levelTip">找出隐藏在场景中的5个线索</p>
@@ -252,9 +268,12 @@ export default {
           message: '回答正确！',
           type: 'success'
         })
+        document.getElementById('correctAudio').play()
         this.quesShow = false
         this.question = {}
         if(this.popShow==false && this.basketballShow==false && this.stoneShow==false && this.lapShow==false && this.grassShow==false){
+           document.getElementById('bgMusic12').pause()
+           document.getElementById('attackSuccessMusic').play()
            this.tipsShow=true
         }
       } else {
@@ -262,6 +281,7 @@ export default {
           message: '回答错误！',
           type: 'error'
         });
+        document.getElementById('wrongAudio').play()
        if(this.a==2){
          this.a-=1;
          this.life2=false
@@ -269,6 +289,8 @@ export default {
            this.a-=1;
            this.life1=false
            this.overShow=true
+           document.getElementById('bgMusic12').pause()
+           document.getElementById('overMusic').play()
        }
       }
     },
@@ -374,7 +396,7 @@ export default {
   background: #000000;
   opacity: 0.9;
   position: absolute;
-  z-index: 1000;
+  z-index: 10000;
 }
 .overText{
   margin-top: 130px;

@@ -3,6 +3,22 @@
     <div class="bgOut"></div>
     <img src="../../assets/phonedesk.png" class="bgIn" /> 
 
+    <audio id="overMusic">
+      <source src="../../assets/overMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio autoplay loop id='bgMusic26'>
+      <source src="../../assets/bgm2.mp3" type="audio/mp3" />
+    </audio>
+  
+    <audio autoplay loop id='countDownMusic'>
+      <source src="../../assets/countDown.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="successSave">
+      <source src="../../assets/successSave.mp3" type="audio/mp3" />
+    </audio>
+
     <el-tooltip class="item" effect="dark" content="“交友圈”大量的消息提醒让梦梦很烦躁" placement="right">
       <el-button>💡已获提示</el-button>
     </el-tooltip>
@@ -15,11 +31,7 @@
       <el-button>💡已获提示</el-button>
     </el-tooltip>
 
-    <p class="levelTipS6">在20s内救出梦梦，速度越快，奖励越丰富哦！</p>
-
-    <audio autoplay loop>
-      <source src="../../assets/bgm2.mp3" type="audio/mp3" />
-    </audio>
+    <p class="levelTipS6">在30s内救出梦梦，速度越快，奖励越丰富哦！</p>
 
     <div class="cardBox">
         {{"倒计时："+times+"秒"}}
@@ -136,9 +148,17 @@ export default {
         if(this.times===0){
           clearInterval(this.timer)
           this.overShow=true
+          this.limitShow=false
+          this.setShow=false
+          document.getElementById('bgMusic26').pause()
+          document.getElementById('countDownMusic').pause()
+          document.getElementById('overMusic').play()
         }else{
           if(this.successShow==true){
              clearInterval(this.timer)
+             document.getElementById('bgMusic26').pause()
+             document.getElementById('countDownMusic').pause()
+             document.getElementById('successSave').play()
           }
         }
       },1000)

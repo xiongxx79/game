@@ -1,6 +1,31 @@
 <template>
   <div class="bgWrap">
     <div class="bgOut"></div>
+
+    <audio autoplay loop id="bgMusic13">
+      <source src="../../assets/attackBgMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio autoplay>
+      <source src="../../assets/phones2.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="overMusic">
+      <source src="../../assets/overMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="wrongAudio">
+      <source src="../../assets/wrongAudio.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="correctAudio">
+      <source src="../../assets/correctAudio.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="attackSuccessMusic">
+      <source src="../../assets/attackSuccessMusic.mp3" type="audio/mp3" />
+    </audio>
+
     <img src="../../assets/attackOneBg.png" class="bgIn" />
     <img src="../../assets/butterfly2.gif" class="butterfly2" />
 
@@ -261,6 +286,7 @@ export default {
           message: '回答正确！',
           type: 'success'
         })
+        document.getElementById('correctAudio').play()
         this.badFaceShow = false
         this.hurtFaceShow = true
         const that = this
@@ -290,6 +316,8 @@ export default {
         }
         if (this.blood1Show == false && this.blood2Show == false && this.blood3Show == false) {
            setTimeout(() => {
+           document.getElementById('attackSuccessMusic').play()
+           document.getElementById('bgMusic13').pause()
            this.badFaceShow = false
            this.badFaceShow11=true
         }, 2000)
@@ -303,6 +331,7 @@ export default {
           message: '回答错误！',
           type: 'error'
         })
+        document.getElementById('wrongAudio').play()
         this.quesShow = false
         this.question = {}
         if (this.b != 3) {
@@ -328,7 +357,9 @@ export default {
         if (this.stone1Show == false && this.stone2Show == false && this.stone3Show == false
           && this.stone4Show == false && this.stone5Show == false) {
               if(this.blood1Show==true || this.blood2Show==true || this.blood3Show==true){
-              this.overShow = true
+                  document.getElementById('bgMusic13').pause()
+                  document.getElementById('overMusic').play()
+                  this.overShow = true
               }
       }
     }

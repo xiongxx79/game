@@ -5,6 +5,18 @@
     <img src="../../assets/lockBgPhone.png" class="bgIn">
     <p class="levelTipS4">匹配网络成瘾的危害与释义得到密码</p>
 
+   <audio autoplay loop>
+      <source src="../../assets/lockMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="wrongAudio">
+      <source src="../../assets/wrongAudio.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="correctAudio">
+      <source src="../../assets/correctAudio.mp3" type="audio/mp3" />
+    </audio>
+
     <div class="explains">
         <p class="explain">04 过度沉迷网络中的虚拟角色，迷失真实自我，逃避现实挫折</p>
         <p class="explain">5g 食欲不振、体重下降、睡眠减少、头昏眼花、情绪低落、精神难以集中；免疫力下降、引发心血管疾病甚至猝死；情感障碍、抑郁、焦虑</p>
@@ -57,12 +69,14 @@ methods:{
           message: '密码正确！',
           type: 'success'
         })
+        document.getElementById('correctAudio').play()
            this.$router.push({ path: '/levelone/s5' })
         }else{
         this.$message({
           message: '密码错误！',
           type: 'error'
         })
+        document.getElementById('wrongtAudio').play()
     }
     },
 },

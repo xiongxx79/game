@@ -21,6 +21,9 @@
         <el-button type="warning" round @click="sendAnswer">确定</el-button>
       </div>
     </div>
+    <audio id="wrongAudio">
+      <source src="../assets/wrongAudio.mp3" type="audio/mp3" />
+    </audio>
   </div>
 </template>
 
@@ -43,6 +46,7 @@ export default {
           message: '您还没选择答案！',
           type: 'warning'
         })
+        document.getElementById('wrongAudio').play()
       }
     },
     handleToClick (e) {

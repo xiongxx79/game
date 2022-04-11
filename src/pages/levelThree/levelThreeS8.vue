@@ -3,6 +3,18 @@
     <div class="bgOut"></div>
      <img src="../../assets/daddy2.png" class="bgIn">
 
+    <audio autoplay>
+      <source src="../../assets/hero9.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="dadtalk">
+      <source src="../../assets/dadtalk.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="successPass">
+      <source src="../../assets/successPass.mp3" type="audio/mp3" />
+    </audio>
+
     <myDialog 
         @showButton="showBtn" 
         :talkList="talkList">
@@ -46,10 +58,12 @@ data(){
 },
 methods:{
     showBtn() {
+      document.getElementById('dadtalk').play()
       this.talkShow=true
       setTimeout(() => {
         this.passShow=true
-        }, 9000)
+        document.getElementById('successPass').play()
+        }, 18000)
     },
     jumpMap () {
       this.$router.push({ path: '/map' })

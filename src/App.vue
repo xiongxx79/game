@@ -1,12 +1,10 @@
 <template>
   <div id="app">
-    <!-- <levelOne/> -->
   <router-view/>
   </div>
 </template>
 
 <script>
-// import levelOne from "./pages/levelOne"
 
 import 'animate.css';
 

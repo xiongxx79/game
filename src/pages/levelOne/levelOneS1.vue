@@ -3,9 +3,17 @@
     <div class="bgOut"></div>
         <img src="../../assets/BasketballCourt.jpg" class="bgIn">
 
-    <!-- <audio autoplay loop>
-      <source src="../../assets/bgm1.mp3" type="audio/mp3" />
-    </audio> -->
+    <audio autoplay>
+      <source src="../../assets/hero1.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="phones1">
+      <source src="../../assets/phones1.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="hero2">
+      <source src="../../assets/hero2.mp3" type="audio/mp3" />
+    </audio>
 
       <myDialog 
         @showButton="showBtn" 
@@ -23,7 +31,7 @@
       plain
       class="mainButton"
       v-if="buttonShow1"
-      @click="dialogShow1=buttonShow1=false,dialogShow2=true"
+      @click="showDialog2"
       >
       什么？！
       </el-button>
@@ -75,16 +83,23 @@ export default {
     handleToJump: () => {
 
     },
-    sJump1 () {
-      this.$router.push({ path: '/levelone/s2' })
-    },
     showBtn (data) {
+      document.getElementById('phones1').play()
       this.sirShow = data
       this.buttonShow1 = data
     },
     showBtn2 (data) {
       this.buttonShow2 = data
-    }
+    },
+    showDialog2(){
+      document.getElementById('hero2').play()
+      this.dialogShow1=false
+      this.buttonShow1=false
+      this.dialogShow2=true
+    },
+    sJump1 () {
+      this.$router.push({ path: '/levelone/s2' })
+    },
   },
 
   components: {

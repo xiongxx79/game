@@ -5,6 +5,18 @@
     <img src="../../assets/lockBgPhone.png" class="bgIn">
     <p class="levelTipS4">匹配合理使用数字设备的方法得到密码</p>
 
+    <audio autoplay loop>
+      <source src="../../assets/lockMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="wrongAudio">
+      <source src="../../assets/wrongAudio.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="correctAudio">
+      <source src="../../assets/correctAudio.mp3" type="audio/mp3" />
+    </audio>
+
     <div class="explains2">
         <p class="explain2">90 使用帮助我学习的软件，寻找网络上优质的学习资源</p>
         <p class="explain2">a7 对某些应用程序时设置限制使用时间，将消息提醒设置为静音或关闭部分消息提醒</p>
@@ -57,12 +69,14 @@ methods:{
           message: '密码正确！',
           type: 'success'
         })
-           this.$router.push({ path: '/leveltwo/s5' })
+        document.getElementById('correctAudio').play()
+        this.$router.push({ path: '/leveltwo/s5' })
         }else{
         this.$message({
           message: '密码错误！',
           type: 'error'
         })
+        document.getElementById('wrongAudio').play()
     }
     },
 },

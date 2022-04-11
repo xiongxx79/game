@@ -3,6 +3,18 @@
     <div class="bgOut"></div>
         <img src="../../assets/river.png" class="bgIn">
 
+    <audio autoplay>
+      <source src="../../assets/hero4.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="liukai">
+      <source src="../../assets/liukai.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="hero5">
+      <source src="../../assets/hero5.mp3" type="audio/mp3" />
+    </audio>
+
     <myDialog 
         @showButton="showBtn" 
         :talkList="talkList1"
@@ -64,10 +76,12 @@ data(){
 
 methods:{
   showBtn(){
+    document.getElementById('liukai').play()
     this.dialogShow1=false
     this.liuDialogShow=true
   },
   showBtnLiu(){
+    document.getElementById('hero5').play()
     this.liuDialogShow=false
     this.dialogShow2=true
   },

@@ -1,6 +1,11 @@
 <template>
 <div class="bgWrap3">
  <div class="bgOut"></div>
+
+    <audio id="hero7">
+      <source src="../../assets/hero7.mp3" type="audio/mp3" />
+    </audio>
+
     <video
           autoplay
           v-show="videoShow"
@@ -33,6 +38,8 @@
             追去看看
         </el-button>
 
+    <img src="../../assets/phoneSir.png" class="phoneSir32" v-show="phoneSir32Show"/>
+
   </div>
 </template>
 
@@ -45,6 +52,7 @@ export default {
 
   data () {
     return {
+      phoneSir32Show:false,
       videoShow: true,
       imgShow: false,
       buttonShow:false,
@@ -59,10 +67,15 @@ export default {
 
   methods: {
     stopVideo () {
+      document.getElementById('hero7').play()
       this.videoShow = false
       this.imgShow = true
     },
     showBtn(){
+        this.phoneSir32Show=true
+        setTimeout(() => {
+           this.phoneSir32Show=false
+        }, 2000)
         this.buttonShow=true
     },
     s3jump2(){
@@ -83,5 +96,14 @@ export default {
   position: absolute;
   animation: fadeIn 4s;
   z-index: 10;
+}
+.phoneSir32{
+  width: 150px;
+  height: 200px;
+  left: 350px;
+  top: 200px;
+  position: absolute;
+  z-index: 100;
+  animation: backOutLeft 2s;
 }
 </style>

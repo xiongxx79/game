@@ -1,6 +1,31 @@
 <template>
 <div class="bgWrap3">
  <div class="bgOut"></div>
+
+    <audio autoplay>
+      <source src="../../assets/phones5.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="overMusic">
+      <source src="../../assets/overMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio autoplay loop id="bgMusic33">
+      <source src="../../assets/mouseBg.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="attackSuccessMusic">
+      <source src="../../assets/attackSuccessMusic.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="wrongAudio">
+      <source src="../../assets/wrongAudio.mp3" type="audio/mp3" />
+    </audio>
+
+    <audio id="correctAudio">
+      <source src="../../assets/correctAudio.mp3" type="audio/mp3" />
+    </audio>
+    
     <img src="../../assets/kitchen.png" class="bgIn" v-if="kitchen1Show">
     <img src="../../assets/kitchen2.png" class="bgIn" v-if="kitchen2Show"  style="animation:fadeIn 1s;">
         <el-button 
@@ -372,10 +397,13 @@ methods:{
           message: '回答正确！',
           type: 'success'
         })
+        document.getElementById('correctAudio').play()
         this.quesShow = false
         this.question = {}
         this.b+=1
         if(this.b==5){
+           document.getElementById('bgMusic33').pause()
+           document.getElementById('attackSuccessMusic').play()
            this.tipsShow=true
            this.mouseShow=false
         }
@@ -384,12 +412,15 @@ methods:{
           message: '回答错误！',
           type: 'error'
         });
+        document.getElementById('wrongAudio').play()
        if(this.a==2){
          this.a-=1;
          this.life2=false
        }else{
            this.a-=1;
            this.life1=false
+           document.getElementById('bgMusic33').pause()
+           document.getElementById('overMusic').play()
            this.overShow=true
        }
       }

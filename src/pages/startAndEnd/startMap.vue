@@ -2,7 +2,7 @@
 <div class="bgWrap">
     <div class="bgOut"></div>
 
-        <div class="mapMap">
+    <div class="mapMap">
         <img src="../../assets/bigMap.png" class="bigMap">
         <img src="../../assets/L1.png" class="L1" @click="toLevelOne">
         <img src="../../assets/L2.png" class="L2" @click="toLevelTwo">
@@ -42,7 +42,7 @@ methods:{
       this.$router.push({ path: '/levelthree/s1' })        
      },
     toDesignActivity(){
-      this.$router.push({ path: '/end/s1' })     
+      this.$router.push({ path: '/phoneStore' })     
      },
 }
 }
